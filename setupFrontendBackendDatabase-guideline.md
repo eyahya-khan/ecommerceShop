@@ -122,6 +122,11 @@ app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localho
 
 - npm i react-icons  >>>>  npm i react-router-dom >>>> npm install styled-components >>> npm install @mui/material @emotion/react @emotion/styled
 
+- npm i --save @fortawesome/fontawesome-svg-core
+npm install --save @fortawesome/free-solid-svg-icons
+npm install --save @fortawesome/react-fontawesome
+
+
 
 
 
