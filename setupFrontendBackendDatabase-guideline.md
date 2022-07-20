@@ -98,18 +98,8 @@ dotnet ef migrations remove
 ```
 - Create controller to controll Db.
 
-## 3. Test
-- Add test package inside efCdCollection.tests
-```bash
-    dotnet add package Moq --version 4.18.1
-    dotnet add package FluentAssertions --version 6.7.0
-```
-- Create testing file 
-1. efCdCollection.tests/System/Controllers/TestCdController.cs
-2. efCdCollection.tests/MockData/CdMockData.cs
 
-
-## 4. React Frontend connection
+## 3. React Frontend connection
 - Create react app inside shop24seven folder
 ```bash
     npx create-react-app shop24sevenclient
@@ -120,12 +110,8 @@ dotnet ef migrations remove
 app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000"));
 ```
 
-- npm i react-icons  >>>>  npm i react-router-dom >>>> npm install styled-components >>> npm install @mui/material @emotion/react @emotion/styled
-
-- npm i --save @fortawesome/fontawesome-svg-core
-npm install --save @fortawesome/free-solid-svg-icons
-npm install --save @fortawesome/react-fontawesome
-
+- npm i react-router-dom >>>> npm install styled-components
+- npm install react-bootstrap bootstrap --save   >>>> import 'bootstrap/dist/css/bootstrap.min.css'; in index.js
 
 
 
