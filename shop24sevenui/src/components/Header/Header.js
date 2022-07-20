@@ -1,9 +1,10 @@
 import "./style.css";
 import React, { useState } from "react";
 import Loginform from './Loginform'
-import Navbar from './Navbar'
+import Navbar from './Navbar';
+// import Cart from "../shoppingCart/Cart";
 import Cart from "../Cart/Cart";
-// import Modal from "../Modal/Modal"
+// import Modal from "../Modal/Modal";
 
 function Header() {
   const [isShowLogin, setIsShowLogin] = useState(false);
@@ -42,6 +43,8 @@ function Header() {
     isCartVisible={isCartVisible} 
     setIsCartVisible = {setIsCartVisible}
     />
+
+{/* <Cart users = {users}/> */}
 </>
   )
 }

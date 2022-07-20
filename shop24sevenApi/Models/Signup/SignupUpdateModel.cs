@@ -12,4 +12,7 @@ public class SignupUpdateModel
 
      [JsonPropertyName("password")]
     public string? Password {get; set;}
+    
+     [JsonPropertyName("confirmPassword")]
+    public string? ConfirmPassword {get; set;}
 }

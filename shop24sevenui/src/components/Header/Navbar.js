@@ -23,9 +23,9 @@ const Navbar = ({
     window.location.reload();
   };
 
-  const handleClick = () => {
-    handleLoginClick();
-  };
+  // const handleClick = () => {
+  //   handleLoginClick();
+  // };
 
   const handleClickSignout = () => {
     localStorage.removeItem("username");
@@ -37,8 +37,8 @@ const Navbar = ({
       const response = await fetch(
         "https://localhost:7152/cart/GetCartByUsername/" + username
       );
-      const deserializedJSON = await response.json();
-      setUsers(deserializedJSON);
+      const result = await response.json();
+      setUsers(result);
     } catch (e) {
       alert(e.message);
     }
@@ -63,8 +63,8 @@ const Navbar = ({
             <div className="overlay-content">
               <Link to="/" onClick={removeHumMenu}>Home</Link>
               <Link to="/product" onClick={removeHumMenu}>Product</Link>
-              <Link to="/about" onClick={removeHumMenu}>About</Link>
-              <Link to="/contact" onClick={removeHumMenu}>Contact</Link>
+              <Link to="/about" onClick={removeHumMenu}>Cart</Link>
+              <Link to="/signup" onClick={removeHumMenu}>Signup</Link>
             </div>
           </div>
         )}
@@ -79,8 +79,11 @@ const Navbar = ({
               </div>
             </>
           ) : (
-            <div onClick={handleClick} className="login-icon">
+            // onClick={handleClick}
+            <div className="login-icon"> 
+              <Link to="/signup">
               Login
+              </Link>
             </div>
           )}
           <div onClick={handleCartButtonClick} className="login-icon">

@@ -32,7 +32,8 @@ public class SignupController : ControllerBase
         {
             UserName = request.UserName,
             Email = request.Email,
-            Password = request.Password
+            Password = request.Password,
+            ConfirmPassword = request.ConfirmPassword,
         };
         _context.TblSignup?.Add(simpleModel);
         await _context.SaveChangesAsync();
@@ -50,6 +51,7 @@ public class SignupController : ControllerBase
             entitiy.UserName = updateModel.UserName;
             entitiy.Email = updateModel.Email;
             entitiy.Password = updateModel.Password;
+            entitiy.ConfirmPassword = updateModel.ConfirmPassword;
             await _context.SaveChangesAsync();
         }
         return Ok(_context.TblSignup);

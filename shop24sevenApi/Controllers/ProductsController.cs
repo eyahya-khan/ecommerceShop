@@ -35,6 +35,7 @@ public class ProductsController : ControllerBase
             ProductName = request.ProductName,
             Description = request.Description,
             Price = request.Price,
+            Quantity = request.Quantity,
             Category = request.Category,
             Image = request.Image
         };
@@ -54,6 +55,7 @@ public class ProductsController : ControllerBase
             entitiy.ProductName = updateModel.ProductName;
             entitiy.Description = updateModel.Description;
             entitiy.Price = updateModel.Price;
+            entitiy.Quantity = updateModel.Quantity;
             entitiy.Category = updateModel.Category;
             entitiy.Image = updateModel.Image;
             await _context.SaveChangesAsync();

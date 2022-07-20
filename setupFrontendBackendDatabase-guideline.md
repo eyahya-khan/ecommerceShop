@@ -112,6 +112,12 @@ app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localho
 
 - npm i react-router-dom >>>> npm install styled-components
 - npm install react-bootstrap bootstrap --save   >>>> import 'bootstrap/dist/css/bootstrap.min.css'; in index.js
+- npm i react-custom-scrollbars-2
+- npm i react-icons
+- add in index.html for icon >>>>>>    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
+      integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 

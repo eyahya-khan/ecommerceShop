@@ -14,7 +14,10 @@ public class UpdateModel
     public string? Description {get; set;}
 
     [JsonPropertyName("price")]
-    public decimal Price {get; set;}
+    public string? Price {get; set;}
+
+    [JsonPropertyName("quantity")]
+    public int Quantity {get; set;}
 
     [JsonPropertyName("category")]
     public string? Category {get; set;}
