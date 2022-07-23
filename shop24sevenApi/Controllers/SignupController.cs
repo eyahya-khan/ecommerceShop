@@ -63,7 +63,7 @@ Console.Read();
             b = Convert.FromBase64String(encrString);
             decrypted = System.Text.ASCIIEncoding.ASCII.GetString(b);
         }
-        catch (FormatException e)
+        catch (FormatException)
         {
             decrypted = "";
         }

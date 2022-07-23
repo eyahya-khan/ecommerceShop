@@ -25,8 +25,6 @@ function Product({ users, getData }) {
                   <h2>{item.productName}</h2>
                   <p>{item.price} SEK</p>
                   <AlertMessage
-                    // productId={item.productId}
-                    // productName={item.productName}
                     {...item}
                   />
                 </div>

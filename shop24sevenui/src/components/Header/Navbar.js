@@ -63,9 +63,8 @@ const Navbar = () => {
             </div>
           )}
           <div className="cart-icon">
-            {/* <img src="./cart.png" alt="cart" /> */}
             <Link to="/cart">
-            Cart
+            <img src="./images/cart.png" alt="cart" />
             </Link>
             {/* <p>{countContext.countItem}</p> */}
           </div>

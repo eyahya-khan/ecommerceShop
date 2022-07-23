@@ -42,6 +42,7 @@ public class CartController : ControllerBase
                           select new
                           {
                               a.CartUniqueId,
+                              b.CartDetailsId,
                               a.CartId,
                               c.ProductName,
                               c.Description,

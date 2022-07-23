@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
-import Product from "./components/Product";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Product from "./components/Product";
 import Home from "./pages/Home";
 import Signup from "./components/Signup/Signup";
 import Header from "./components/Header/Header";

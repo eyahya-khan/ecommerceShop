@@ -3,40 +3,10 @@ import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 
 
-const AlertMessage = ({ productId, productName, price, image, countContext }) => {
+const AlertMessage = ({ productId, productName}) => {
   const [isAlertVisible, setIsAlertVisible] = useState(false);
+  const [counter, setCounter] = useState(0);
   const cartuniqueid = uuid();
-
-
-  const sendToCartdisplay = async () => {
-    try {
-      var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
-      const body = JSON.stringify({
-        CartUniqueId: cartuniqueid,
-        UserName: localStorage.getItem("username"),
-        ProductId: productId,
-        ProductName: productName,
-        Price: price,
-        Image: image,
-        Quantity: 1,
-      });
-      const requestOptions = {
-        method: "POST",
-        mode: "cors",
-        headers: myHeaders,
-        body: body,
-        redirect: "follow",
-      };
-      const response = await fetch(
-        "https://localhost:7152/cartdisplay",
-        requestOptions
-      );
-      await response.json();
-    } catch (e) {
-      alert(e.message);
-    }
-  };
 
   const sendToCart = async () => {
     try {
@@ -89,8 +59,11 @@ const AlertMessage = ({ productId, productName, price, image, countContext }) =>
     }
   };
 
+  const handleCounter = () =>{
+    setCounter(counter + 1);
+  }
+
   const handleButtonClick = () => {
-    sendToCartdisplay();
     sendToCart();
     sendToCartDetails();
     setIsAlertVisible(true);
@@ -102,7 +75,7 @@ const AlertMessage = ({ productId, productName, price, image, countContext }) =>
   return (
     <div className="App">
       <button onClick={handleButtonClick}>Add to cart</button>
-      <button onClick={()=> countContext.countDispatch('increment')}>Counter</button>
+      <button onClick={handleCounter}>Counter</button>
 
       <div className="counter-container">
           <div className="counter-inner">

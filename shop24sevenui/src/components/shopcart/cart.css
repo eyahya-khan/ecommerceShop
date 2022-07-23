@@ -277,12 +277,17 @@ section.main-cart-section {
   font-size: 1.6rem;
   padding: 1rem 3rem;
   color: #fff;
-  background-color: #349bf3;
+  background-color: #04aa6d;
   text-transform: uppercase;
   margin-top: 1rem;
   border-radius: 0.5rem;
   cursor: pointer;
   letter-spacing: 1px;
+}
+
+.card-total button a{
+  text-decoration: none;
+  color: #fff;
 }
 
 /* hover effects  */

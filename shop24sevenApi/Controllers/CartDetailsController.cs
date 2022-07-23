@@ -47,8 +47,6 @@ public class CartDetailsController : ControllerBase
 
         if (entitiy != null)
         {
-            entitiy.CartUniqueId = cartUpdateModel.CartUniqueId;
-            entitiy.ProductId = cartUpdateModel.ProductId;
             entitiy.Quantity = cartUpdateModel.Quantity;
             await _context.SaveChangesAsync();
         }

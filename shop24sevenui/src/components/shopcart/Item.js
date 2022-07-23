@@ -1,8 +1,9 @@
-import React from "react";
-// import { CartContext } from "./Cart";
+import React, { useContext } from "react";
+import { CartContext } from "./Cart";
 
-const Items = ({ CartUniqueId, cartId, productName, price, quantity, removeItem, increaseQuantity, itemQuant, selectUser }) => {
-//   const { removeItem, increment, decrement } = useContext(CartContext);
+const Items = ({ cartId,cartDetailsId, productName, price, quantity }) => {
+  const { removeItem, increment, decrement} = useContext(CartContext);
+  
   return (
     <>
       <div className="items-info">
@@ -12,14 +13,14 @@ const Items = ({ CartUniqueId, cartId, productName, price, quantity, removeItem,
 
         <div className="title">
           <h2>{productName}</h2>
-          <p>car---Id: {itemQuant}</p>
           <p>cartId: {cartId}</p>
+          <p>cartDetailsId: {cartDetailsId}</p>
         </div>
 
         <div className="add-minus-quantity">
-          <i className="fas fa-minus minus"></i>
+          <i className="fas fa-minus minus" onClick={()=>decrement(cartId, quantity)}></i>
           <input type="text" placeholder={quantity} disabled />
-          <i className="fas fa-plus add" onClick={() => selectUser(cartId, quantity)}></i>
+          <i className="fas fa-plus add" onClick={() => increment(cartId, quantity)}></i>
         </div>
 
         <div className="price">
