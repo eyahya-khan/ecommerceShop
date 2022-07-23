@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using shop24sevenApi.Data;
-using shop24sevenApi.Models;
+using shop24sevenApi.Models.Order;
 
 namespace shop24sevenApi.Controllers;
 
@@ -25,42 +25,27 @@ public class OrderController : ControllerBase
         return Ok(getDataById);
     }
 
-    // [HttpGet]
-    // [Route("GetCartByUsername/{username?}")]
-    // public IActionResult GetCartByUsername(string username)
-    // {
-    //     if (_context.TblCart == null || _context.TblCartDetails == null || _context.TblProducts == null) return Ok();
-    //     var queryResult = from a in _context.TblCart
-    //                       join b in _context.TblCartDetails
-    //                       on a.CartUniqueId equals b.CartUniqueId
-    //                       join c in _context.TblProducts
-    //                         on b.ProductId equals c.ProductId
-    //                       where a.UserName == username
-    //                       select new
-    //                       {
-    //                           a.CartId,
-    //                           c.ProductName,
-    //                           c.Description,
-    //                           c.Price,
-    //                           c.Image,
-    //                           b.Quantity
-    //                       };
-    //     return Ok(queryResult);
-    // }
-
-
-    // [HttpPost]
-    // public async Task<IActionResult> Add(CartInsertModel request)
-    // {
-    //     var simpleModel = new Cart()
-    //     {
-    //         CartUniqueId = request.CartUniqueId,
-    //         UserName = request.UserName,
-    //     };
-    //     _context.TblCart?.Add(simpleModel);
-    //     await _context.SaveChangesAsync();
-    //     return Ok(_context.TblCart);
-    // }
+    [HttpPost]
+    public async Task<IActionResult> Add(OrderInsertModel request)
+    {
+        var newOrder = new Order()
+        {
+            UserName = request.UserName,
+            FirstName = request.FirstName,
+            LastName = request.LastName,
+            Email = request.Email,
+            PhoneNumber = request.PhoneNumber,
+            Address = request.Address,
+            PostalCode = request.PostalCode,
+            City = request.City,
+            Country = request.Country,
+            PaymentMethod = request.PaymentMethod,
+            //gender
+        };
+        _context.TblOrder?.Add(newOrder);
+        await _context.SaveChangesAsync();
+        return Ok(_context.TblOrder);
+    }
 
     // [HttpPut("{id}")]
     // public async Task<IActionResult> update(int id, CartUpdateModel cartUpdateModel)

@@ -1,29 +1,16 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect } from "react";
 import AlertMessage from "./Alert/AlertMessage";
 
-function Product() {
-  const [users, setUsers] = useState([]);
-
-  const getData = async () => {
-    try {
-      const response = await fetch("https://localhost:7152/products");
-      const deserializedJSON = await response.json();
-      setUsers(deserializedJSON);
-    } catch (e) {
-      alert(e.message);
-    }
-  };
+function Product({ users, getData }) {
+  useEffect(() => {
+    getData();
+  },[]);
 
   return (
     <>
       <div className="container">
         <div>
-          <div className="btn load-data">
-            <button className="btn-load" onClick={getData}>
-              Load all products...
-            </button>
-          </div>
+          <div className="btn load-data"></div>
           <div className="product-container">
             {users.map((item) => {
               return (
@@ -38,8 +25,9 @@ function Product() {
                   <h2>{item.productName}</h2>
                   <p>{item.price} SEK</p>
                   <AlertMessage
-                    productId={item.productId}
-                    productName={item.productName}
+                    // productId={item.productId}
+                    // productName={item.productName}
+                    {...item}
                   />
                 </div>
               );

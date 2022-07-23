@@ -13,6 +13,23 @@
     overflow-x: hidden;
     transition: 0.5s;
   }
+
+
+  .cart-icon {
+    display: flex;
+    text-align: end;
+    margin-right: 2rem;
+    align-items: center;
+    position: relative;
+    justify-content: flex-end;
+  }
+  
+  .cart-icon img {
+    width: 5rem;
+    height: 5rem;
+    color: #2f80ed;
+  }
+
   
   .overlay-content {
     position: relative;
@@ -26,7 +43,7 @@
     padding: 8px;
     text-decoration: none;
     font-size: 36px;
-    color: #818181;
+    color: #04aa6d;
     display: block;
     transition: 0.3s;
   }

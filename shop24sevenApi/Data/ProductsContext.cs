@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using shop24sevenApi.Models;
 using shop24sevenApi.Models.Cart;
 using shop24sevenApi.Models.Category;
+using shop24sevenApi.Models.Order;
 using shop24sevenApi.Models.Products;
 using shop24sevenApi.Models.Signup;
 

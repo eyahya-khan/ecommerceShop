@@ -12,7 +12,8 @@ const initialState = {
   totalItem: 0,
 };
 
-const Cart = ({users}) => {
+
+const Cart = () => {
   // const [item, setItem] = useState(products);
   const [state, dispatch] = useReducer(reducer, initialState);
 

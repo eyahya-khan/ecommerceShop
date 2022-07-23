@@ -73,12 +73,6 @@ namespace shop24sevenApi.Migrations
                     b.Property<string>("CartUniqueId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Category")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
@@ -93,6 +87,9 @@ namespace shop24sevenApi.Migrations
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
+
+                    b.Property<string>("userName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CartId");
 
@@ -118,7 +115,7 @@ namespace shop24sevenApi.Migrations
                     b.ToTable("TblCategory");
                 });
 
-            modelBuilder.Entity("shop24sevenApi.Models.Order", b =>
+            modelBuilder.Entity("shop24sevenApi.Models.Order.Order", b =>
                 {
                     b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd()

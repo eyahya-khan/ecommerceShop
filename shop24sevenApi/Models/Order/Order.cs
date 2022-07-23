@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace shop24sevenApi.Models;
+namespace shop24sevenApi.Models.Order;
 
 public class Order
 {

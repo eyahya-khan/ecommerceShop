@@ -1,0 +1,19 @@
+.form-container.card.p-3.w-50.mt-5 {
+    background-color: #04aa6d;
+    justify-content: center;
+    height: 65vh;
+    font-size: 14px;
+}
+.form-inner-container{
+margin: 10%;
+}
+.form-control {
+    font-size: 2rem!important;
+}
+
+
+@media screen and (min-width: 992px) {
+    .form-container.card.p-3.w-50.mt-5 {
+        font-size: 20px;
+    }
+  }

@@ -1,14 +1,8 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { Link } from "react-router-dom";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "./Navbar.css";
 
-const Navbar = ({
-  handleLoginClick,
-  setIsShowLogin,
-  setIsCartVisible,
-  setUsers,
-}) => {
+const Navbar = () => {
   const [humMenu, setHumMenu] = useState(false);
   const username = localStorage.getItem("username");
 
@@ -23,26 +17,9 @@ const Navbar = ({
     window.location.reload();
   };
 
-  // const handleClick = () => {
-  //   handleLoginClick();
-  // };
-
   const handleClickSignout = () => {
     localStorage.removeItem("username");
     refresh();
-  };
-
-  const handleCartButtonClick = async () => {
-    try {
-      const response = await fetch(
-        "https://localhost:7152/cart/GetCartByUsername/" + username
-      );
-      const result = await response.json();
-      setUsers(result);
-    } catch (e) {
-      alert(e.message);
-    }
-    setIsCartVisible(true);
   };
 
   return (
@@ -63,7 +40,7 @@ const Navbar = ({
             <div className="overlay-content">
               <Link to="/" onClick={removeHumMenu}>Home</Link>
               <Link to="/product" onClick={removeHumMenu}>Product</Link>
-              <Link to="/about" onClick={removeHumMenu}>Cart</Link>
+              <Link to="/cart" onClick={removeHumMenu}>Cart</Link>
               <Link to="/signup" onClick={removeHumMenu}>Signup</Link>
             </div>
           </div>
@@ -79,16 +56,18 @@ const Navbar = ({
               </div>
             </>
           ) : (
-            // onClick={handleClick}
             <div className="login-icon"> 
               <Link to="/signup">
               Login
               </Link>
             </div>
           )}
-          <div onClick={handleCartButtonClick} className="login-icon">
-            {/* <FontAwesomeIcon icon="fa-solid fa-cart-shopping" /> */}
+          <div className="cart-icon">
+            {/* <img src="./cart.png" alt="cart" /> */}
+            <Link to="/cart">
             Cart
+            </Link>
+            {/* <p>{countContext.countItem}</p> */}
           </div>
         </div>
       </div>

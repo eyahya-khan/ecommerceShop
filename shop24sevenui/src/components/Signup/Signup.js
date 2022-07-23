@@ -1,5 +1,7 @@
 import "./signup.css";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -40,13 +42,13 @@ const Signup = () => {
       alert(e.message);
     }
   };
-
   return (
     <>
       <div className="signin-container">
         <div className="signin-inner">
           <div className="section-login">
             <h1 className="login-text">Login</h1>
+            <div className="section-signup-input">
             <label>Email</label>
             <br></br>
             <input
@@ -66,13 +68,15 @@ const Signup = () => {
               // value={password}
               // onChange={(e) => setPassword(e.target.value)}
             />
-            <br></br>
-            <br /> <button>Login</button>
-            <br />
-            <p>No account? Create your account down </p>
+            </div>
+            <div className="btn-signin-container">
+            <button className="btn-signin">Login</button>
+            </div>
+            <p className="signin-para">No account? Create your account first </p>
           </div>
           <div className="section-signup">
             <h1 className="login-text">Signup</h1>
+            <div className="section-signup-input">
             <label>Email</label>
             <br></br>
             <input
@@ -101,8 +105,12 @@ const Signup = () => {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
-            <br></br>
-            <br /> <button onClick={handleSignin}>Signup</button>
+            </div>
+            <div className="btn-signin-container">
+            <button className="btn-signin" onClick={handleSignin}>
+            <Link to="/product">Signup</Link>
+            </button>
+            </div>
             <br />
           </div>
         </div>

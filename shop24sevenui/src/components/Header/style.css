@@ -1,6 +1,7 @@
 .title-logo {
   background: #04aa6d;
   width: 100%;
+  padding: 10px;
 }
 
 .title-logo a {
@@ -76,6 +77,11 @@
   align-items: center;
   margin-right: 5px;
   cursor: pointer;
+}
+
+.login-icon a{
+  color: #000;
+  text-decoration: none;
 }
 
  @media screen and (min-width: 992px) {

@@ -12,6 +12,7 @@ function ReviewInfo({info}) {
     <div>Country: {info.Country}</div>
     <div>Email: {info.Email}</div>
     <div>Phone number: {info.PhoneNumber}</div>
+    <div>Payment method: {info.PaymentMethod}</div>
     </>
   )
 }

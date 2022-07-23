@@ -1,0 +1,19 @@
+.footer-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #04aa6d;
+    color: #000;
+    font-size: 16px;
+}
+
+.footer-inner-container{
+    padding: 10px;
+}
+
+.footer-inner-container a{
+    color: #000;
+    text-decoration: none;
+}

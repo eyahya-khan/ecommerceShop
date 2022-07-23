@@ -1,4 +1,7 @@
+using System.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using shop24sevenApi.Data;
 using shop24sevenApi.Models.Cart;
 
@@ -38,6 +41,7 @@ public class CartController : ControllerBase
                           where a.UserName == username
                           select new
                           {
+                              a.CartUniqueId,
                               a.CartId,
                               c.ProductName,
                               c.Description,
@@ -45,6 +49,8 @@ public class CartController : ControllerBase
                               c.Image,
                               b.Quantity
                           };
+
+
         return Ok(queryResult);
     }
 
@@ -80,10 +86,28 @@ public class CartController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
-        var deleteModel = new Cart() { CartId = id };
-        if (_context.TblCart == null) return NotFound();
-        _context.TblCart.Remove(deleteModel);
-        await _context.SaveChangesAsync();
+        //  var entitiy = _context.TblCart?.FirstOrDefault(item => item.CartId == id);
+
+        // if (entitiy == null) return NotFound();
+        // var entity1 = _context.TblCartDetails?.FirstOrDefault(item => item.CartDetailsId == id);
+        // var deleteFromCartdetails = new CartDetails() { CartUniqueId = entitiy.CartUniqueId };
+
+        // if (_context.TblCartDetails == null) return NotFound();
+        // _context.TblCartDetails.Remove(deleteFromCartdetails);
+
+        // var deleteFromCart = new Cart() { CartUniqueId = entitiy.CartUniqueId };
+        // if (_context.TblCart == null) return NotFound();
+
+        // _context.TblCart.Remove(deleteFromCart);
+
+        // await _context.SaveChangesAsync();
+
+
+        var entityId = new SqlParameter("@CartId", id);
+
+        await _context.Database.ExecuteSqlRawAsync("EXEC deleteCartById @CartId", entityId);
+
+        // var res =  (bool)result.Value;
         return Ok(_context.TblCart);
     }
 }

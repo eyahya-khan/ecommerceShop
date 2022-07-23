@@ -12,9 +12,22 @@ public class SignupController : ControllerBase
     public SignupController(ProductsContext context) => _context = context;
 
     [HttpGet]
-    public IActionResult Get()
+    public IActionResult Login(string UserName, string Password)
     {
-        return Ok(_context.TblSignup);
+        var depPass = _context.TblSignup?.Where(x => x.UserName == UserName);
+
+Console.WriteLine("Hello world");
+Console.WriteLine("Press any key to exit.");
+Console.Read();
+
+        int result = 1;
+        // if(DecryptString() == Password)
+        // {
+        //     result = 1;
+        // }else{
+        //     result = 0;
+        // }
+        return Ok(result);
     }
 
     [HttpGet("{id}")]
@@ -28,17 +41,42 @@ public class SignupController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Add(Models.Cart.SignupInsertModel request)
     {
+        var encrptPassword = EnryptString(request.Password == null ? "" : request.Password);
         var simpleModel = new Signup()
         {
             UserName = request.UserName,
             Email = request.Email,
-            Password = request.Password,
+            Password = encrptPassword,
             ConfirmPassword = request.ConfirmPassword,
         };
         _context.TblSignup?.Add(simpleModel);
         await _context.SaveChangesAsync();
         return Ok(_context.TblSignup);
     }
+
+    public string DecryptString(string encrString)
+    {
+        byte[] b;
+        string decrypted;
+        try
+        {
+            b = Convert.FromBase64String(encrString);
+            decrypted = System.Text.ASCIIEncoding.ASCII.GetString(b);
+        }
+        catch (FormatException e)
+        {
+            decrypted = "";
+        }
+        return decrypted;
+    }
+
+    public static string EnryptString(string strEncrypted)
+    {
+        byte[] b =  System.Text.ASCIIEncoding.ASCII.GetBytes(strEncrypted);
+        string encrypted = Convert.ToBase64String(b);
+        return encrypted;
+    }
+
 
     [HttpPut("{id}")]
     public async Task<IActionResult> update(int id, Models.Cart.SignupUpdateModel updateModel)

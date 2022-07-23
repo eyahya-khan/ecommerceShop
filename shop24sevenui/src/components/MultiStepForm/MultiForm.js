@@ -1,3 +1,4 @@
+import './multiForm.css'
 import React, { useState } from "react";
 import PersonalInfo from "./PersonalInfo";
 import ContactInfo from "./ContactInfo";
@@ -17,9 +18,46 @@ const MultiForm = () => {
     PostalCode: "",
     City: "",
     Country: "",
+    PaymentMethod: "CASH",
   });
-
   const [step, setStep] = useState(1);
+
+  const handleOrder = async (e) => {
+    var username = localStorage.getItem("username");
+    try {
+      e.preventDefault();
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      const body = JSON.stringify({
+        UserName: username,
+        FirstName: values.FirstName,
+        LastName: values.LastName,
+        Email: values.Email,
+        PhoneNumber: values.PhoneNumber,
+        Address: values.Address,
+        PostalCode: values.PostalCode,
+        City: values.City,
+        Country: values.Country,
+        PaymentMethod: "CASH",
+      });
+      const requestOptions = {
+        method: "POST",
+        mode: "cors",
+        headers: myHeaders,
+        body: body,
+        redirect: "follow",
+      };
+
+      const response = await fetch(
+        "https://localhost:7152/order",
+        requestOptions
+      );
+      await response.json();
+      nextStep();
+    } catch (e) {
+      alert(e.message);
+    }
+  };
 
   const nextStep = () => {
     if (step < 5) {
@@ -38,9 +76,10 @@ const MultiForm = () => {
   };
 
   return (
-    <div className="bg-dark vh-100">
+    <div className="vh-100">
       <div className="container d-flex justify-content-center align-items-center">
-        <div className="card p-3 w-50 mt-5">
+        <div className="form-container card p-3 w-50 mt-5">
+          <div className='form-inner-container'>
           {
             {
               1: <PersonalInfo handleChange={handleChange} />,
@@ -50,15 +89,27 @@ const MultiForm = () => {
               5: <SuccessInfo />,
             }[step]
           }
+            </div>
           <div className="d-flex justify-content-around px-5 mt-5">
             {step > 1 && step < 5 ? (
-              <button className="btn btn-warning" onClick={prevStep}>
+              <button className="btn btn-dark" onClick={prevStep}>
                 Back
               </button>
             ) : null}
-            <button className="btn btn-warning" onClick={nextStep}>
-              {step >= 1 && step < 4 ? "Next" : step === 4 ? "Submit" : <Link to="/">Home</Link>}
-            </button>
+
+            {step >= 1 && step < 4 ? (
+              <button className="btn btn-dark" onClick={nextStep}>
+                Next
+              </button>
+            ) : step === 4 ? (
+              <button className="btn btn-dark" onClick={handleOrder}>
+                Submit
+              </button>
+            ) : (
+              <button className="btn btn-dark">
+                <Link to="/">Home</Link>
+              </button>
+            )}
           </div>
         </div>
       </div>

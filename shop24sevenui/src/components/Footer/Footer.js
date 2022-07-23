@@ -1,15 +1,21 @@
-import React from 'react'
+import React from "react";
+import './Footer.css'
 
 function Footer() {
   return (
     <>
-   <footer className="row bg-black justify-content-center p-5">
-          <div className="col-4">
-            <a className="text-white" href="https://github.com/eyahya-khan">Github</a>
-          </div>
-        </footer>
+      <footer className="footer-container">
+      <div className="footer-inner-container">
+          @ {new Date().getFullYear()} - Eyahya Khan
+        </div>
+        <div className="footer-inner-container">
+          <a href="https://github.com/eyahya-khan">
+            Github
+          </a>
+        </div>
+      </footer>
     </>
-  )
+  );
 }
 
-export default Footer
+export default Footer;
