@@ -1,10 +1,13 @@
-import React, { useEffect, createContext } from "react";
+import React, { useEffect, createContext, useContext } from "react";
 import "./cart.css";
 import ContextCart from "./ContextCart";
+import { GlobalContext } from "../../App";
 
 export const CartContext = createContext();
 
-function Cart({ cartusers, handleCartButtonClick}) {
+function Cart() {
+
+  const {cartusers, handleCartButtonClick} = useContext(GlobalContext)
 
   const removeItem = async (id) => {
     var requestOptions = {

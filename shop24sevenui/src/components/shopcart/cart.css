@@ -79,19 +79,18 @@ section.main-cart-section {
 
 .cart-icon p {
   position: absolute;
-  width: 4rem;
-  height: 4rem;
-  right: -1.2rem;
-  top: 0.9rem;
+  width: 3rem;
+  height: 3rem;
+  right: -2.2rem;
+  top: -1.1rem;
   border-radius: 50%;
-  background: #99cbf7;
+  background: red;
   color: #fff;
   box-sizing: border-box;
-  font-size: 1.6rem;
+  font-size: 2.6rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--main-color);
 }
 
 .main-cart-section h1 {

@@ -110,7 +110,7 @@ dotnet ef migrations remove
 app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000"));
 ```
 
-- npm i react-router-dom >>>> npm install styled-components
+- npm i react-router-dom >>>> npm i styled-components
 - npm install react-bootstrap bootstrap --save   >>>> import 'bootstrap/dist/css/bootstrap.min.css'; in index.js
 - npm i react-custom-scrollbars-2
 - npm i react-icons

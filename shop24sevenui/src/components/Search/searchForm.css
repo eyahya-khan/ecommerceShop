@@ -1,0 +1,27 @@
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.btn-search {
+  height: 48px;
+  position: absolute;
+  top: 135px;
+  right: 57px;
+}
+
+@media screen and (min-width: 992px) {
+
+  .btn-search {
+    height: 48px;
+    position: absolute;
+    top: 138px;
+    right: 364px;
+  }
+  input[type="text"] {
+    width: 70%;
+  }
+
+  
+}

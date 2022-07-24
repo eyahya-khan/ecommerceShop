@@ -17,10 +17,10 @@ function ContextCart() {
           <h3>continue shopping</h3>
           </Link>
         </div>
-        <div className="cart-icon">
+        {/* <div className="cart-icon">
           <img src="./images/cart.png" alt="cart" />
           <p>{cartusers.length}</p>
-        </div>
+        </div> */}
       </header>
       <section className="main-cart-section">
         <h1>shopping Cart</h1>

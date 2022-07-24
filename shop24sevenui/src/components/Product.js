@@ -1,7 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import AlertMessage from "./Alert/AlertMessage";
+import { GlobalContext } from "../App";
+import { Div } from "./product.styled";
+// import SearchForm from "./Search/SearchForm";
 
-function Product({ users, getData }) {
+function Product() {
+const {users, getData} = useContext(GlobalContext)
+
   useEffect(() => {
     getData();
   },[]);
@@ -9,8 +14,7 @@ function Product({ users, getData }) {
   return (
     <>
       <div className="container">
-        <div>
-          <div className="btn load-data"></div>
+        {/* <SearchForm/> */}
           <div className="product-container">
             {users.map((item) => {
               return (
@@ -22,19 +26,21 @@ function Product({ users, getData }) {
                     />
                     {/* <img src="./hb.jpg" width="200px" height="200px" alt="img"/> */}
                   </div>
+                  <Div>
                   <h2>{item.productName}</h2>
                   <p>{item.price} SEK</p>
+                  </Div>
                   <AlertMessage
                     {...item}
-                  />
+                    />
                 </div>
               );
             })}
           </div>
-        </div>
       </div>
     </>
   );
 }
 
 export default Product;
+

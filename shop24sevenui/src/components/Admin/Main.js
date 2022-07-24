@@ -1,14 +1,25 @@
 import React from "react";
 import { useState } from "react";
+import './Main.css'
+import {Button} from '../product.styled'
 
 function Main() {
   const [users, setUsers] = useState([]);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [titleForm, setTitleform] = useState("");
-  const [descriptionform, setDescriptionform] = useState("");
   const [initialId, setInitialId] = useState(0);
   const [updateVisibility, setUpdateVisibility] = useState(false);
+
+  const [values, setValues] = useState({
+    ProductName: "",
+    Description: "",
+    Price: "",
+    Quantity: "",
+    Category: "",
+    Image: "",
+  });
+
+  const handleChange = (name) => (e) => {
+    setValues({ ...values, [name]: e.target.value });
+  };
 
   const getData = async () => {
     try {
@@ -22,13 +33,17 @@ function Main() {
   const sendData = async (e) => {
     try {
       e.preventDefault();
-      if (!titleForm || !descriptionform)
-        return alert("Empty field not allowed");
+      // if (!titleForm || !descriptionform)
+      //   return alert("Empty field not allowed");
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       const body = JSON.stringify({
-        Name: titleForm,
-        Description: descriptionform,
+        Name: values.ProductName,
+        Description: values.Description,
+        Price : values.Price,
+        Quantity: values.Quantity,
+        Category: values.Category,
+        Image: values.Image
       });
       const requestOptions = {
         method: "POST",
@@ -43,8 +58,8 @@ function Main() {
       );
       const deserializedJSON = await response.json();
       setUsers(deserializedJSON);
-      setTitleform("");
-      setDescriptionform("");
+      setValues('');
+      // setDescriptionform("");
     } catch (e) {
       alert(e.message);
     }
@@ -52,12 +67,16 @@ function Main() {
 
   const getUpdate = async () => {
     try {
-      if (!title || !description) return alert("Empty field not allowed");
+      // if (!title || !description) return alert("Empty field not allowed");
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       const body = JSON.stringify({
-        Name: title,
-        Description: description,
+        Name: values.ProductName,
+        Description: values.Description,
+        Price : values.Price,
+        Quantity: values.Quantity,
+        Category: values.Category,
+        Image: values.Image
       });
       const requestOptions = {
         method: "PUT",
@@ -73,8 +92,8 @@ function Main() {
       const deserializedJSON = await response.json();
       setUsers(deserializedJSON);
       getData();
-      setTitle("");
-      setDescription("");
+      // setTitle("");
+      // setDescription("");
       setUpdateVisibility(false);
     } catch (e) {
       alert(e.message);
@@ -82,8 +101,8 @@ function Main() {
   };
 
   const selectUser = (id, name, description) => {
-    setTitle(name);
-    setDescription(description);
+    // setTitle(name);
+    // setDescription(description);
     setInitialId(id);
     setUpdateVisibility(true);
   };
@@ -105,28 +124,51 @@ function Main() {
     <>
       <div className="container">
         <div>
-          <h1>Product list</h1>
           <form onSubmit={sendData} className="container-form">
             <input
-              placeholder="Product name"
               type="text"
-              name="name1"
-              value={titleForm}
-              onChange={(e) => {
-                setTitleform(e.target.value);
-              }}
+              // value={productName}
+              placeholder="productName"
+              onChange={handleChange("ProductName")}
+              name="ProductName"
             />
             <input
-              placeholder="Description"
               type="text"
-              name="name2"
-              value={descriptionform}
-              onChange={(e) => {
-                setDescriptionform(e.target.value);
-              }}
+              // value={descriptionform}
+              placeholder="Description"
+              onChange={handleChange("Description")}
+              name="Description"
+            />
+            <input
+              type="text"
+              // value={descriptionform}
+              placeholder="Price"
+              onChange={handleChange("Price")}
+              name="Price"
+            />
+            <input
+              type="text"
+              // value={descriptionform}
+              placeholder="Quantity"
+              onChange={handleChange("Quantity")}
+              name="Quantity"
+            />
+            <input
+              type="text"
+              // value={descriptionform}
+              placeholder="Category"
+              onChange={handleChange("Category")}
+              name="Category"
+            />
+            <input
+              type="file"
+              // value={descriptionform}
+              onChange={handleChange("Image")}
+              name="Image"
+              multiple
             />
             <div className="btn">
-              <button className="btn btn-add">Add</button>
+              <Button className="btn btn-add">Add</Button>
             </div>
           </form>
         </div>
@@ -137,31 +179,59 @@ function Main() {
             }
           >
             <div className="update-container-input">
-              <input
-                value={title}
-                type="text"
-                onChange={(e) => {
-                  setTitle(e.target.value);
-                }}
-              />
-              <input
-                value={description}
-                type="text"
-                onChange={(e) => {
-                  setDescription(e.target.value);
-                }}
-              />
+            <input
+              type="text"
+              // value={productName}
+              placeholder="productName"
+              onChange={handleChange("ProductName")}
+              name="ProductName"
+            />
+            <input
+              type="text"
+              // value={descriptionform}
+              placeholder="Description"
+              onChange={handleChange("Description")}
+              name="Description"
+            />
+            <input
+              type="text"
+              // value={descriptionform}
+              placeholder="Price"
+              onChange={handleChange("Price")}
+              name="Price"
+            />
+            <input
+              type="text"
+              // value={descriptionform}
+              placeholder="Quantity"
+              onChange={handleChange("Quantity")}
+              name="Quantity"
+            />
+            <input
+              type="text"
+              // value={descriptionform}
+              placeholder="Category"
+              onChange={handleChange("Category")}
+              name="Category"
+            />
+            <input
+              type="text"
+              // value={descriptionform}
+              placeholder="Image"
+              onChange={handleChange("Image")}
+              name="Image"
+            />
             </div>
             <div className="update-container-btn">
-              <button className="btn-update" onClick={getUpdate}>
+              <Button className="btn-update" onClick={getUpdate}>
                 Update
-              </button>
+              </Button>
             </div>
           </section>
           <div className="btn load-data">
-            <button className="btn-load" onClick={getData}>
+            <Button className="btn-load" onClick={getData}>
               Load all products...
-            </button>
+            </Button>
           </div>
           <table id="customers">
             <tbody>
@@ -170,7 +240,8 @@ function Main() {
                 <th>Description</th>
                 <th>Price</th>
                 <th>Category</th>
-                <th>image</th>
+                <th>Quantity</th>
+                <th>Image</th>
                 <th></th>
               </tr>
               {users.map((item) => {
@@ -181,23 +252,24 @@ function Main() {
                       <td>{item.description}</td>
                       <td>{item.price}</td>
                       <td>{item.category}</td>
+                      <td>{item.quantity}</td>
                       <td>{item.image}</td>
                       <td>
                         <div className="table-btn">
-                          <button
+                          <Button
                             className="btn btn-edit"
                             onClick={() =>
                               selectUser(item.productId, item.productName, item.description)
                             }
                           >
                             Edit
-                          </button>
-                          <button
+                          </Button>
+                          <Button
                             className="btn btn-delete"
                             onClick={() => getDelete(item.productId)}
                           >
                             Delete
-                          </button>
+                          </Button>
                         </div>
                       </td>
                     </tr>

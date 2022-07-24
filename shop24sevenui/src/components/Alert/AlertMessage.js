@@ -1,11 +1,13 @@
 import "./Alert.css";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { v4 as uuid } from "uuid";
+import { GlobalContext } from "../../App";
+import { Button, Div} from "../product.styled";
 
+const AlertMessage = ({ productId, productName }) => {
+  const { counter, setCounter } = useContext(GlobalContext);
 
-const AlertMessage = ({ productId, productName}) => {
   const [isAlertVisible, setIsAlertVisible] = useState(false);
-  const [counter, setCounter] = useState(0);
   const cartuniqueid = uuid();
 
   const sendToCart = async () => {
@@ -59,13 +61,10 @@ const AlertMessage = ({ productId, productName}) => {
     }
   };
 
-  const handleCounter = () =>{
-    setCounter(counter + 1);
-  }
-
   const handleButtonClick = () => {
     sendToCart();
     sendToCartDetails();
+    setCounter(counter + 1);
     setIsAlertVisible(true);
     setTimeout(() => {
       setIsAlertVisible(false);
@@ -73,15 +72,10 @@ const AlertMessage = ({ productId, productName}) => {
   };
 
   return (
-    <div className="App">
-      <button onClick={handleButtonClick}>Add to cart</button>
-      <button onClick={handleCounter}>Counter</button>
-
-      <div className="counter-container">
-          <div className="counter-inner">
-          </div>
-        </div>
-
+    <>
+    <Div>
+      <Button onClick={handleButtonClick}>Add to cart</Button>
+    </Div>
       {isAlertVisible && (
         <div className="alert-container">
           <div className="alert-inner">
@@ -89,7 +83,7 @@ const AlertMessage = ({ productId, productName}) => {
           </div>
         </div>
       )}
-    </div>
+      </>
   );
 };
 

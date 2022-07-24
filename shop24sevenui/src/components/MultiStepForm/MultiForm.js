@@ -6,6 +6,7 @@ import LocationInfo from "./LocationInfo";
 import ReviewInfo from "./ReviewInfo";
 import SuccessInfo from "./SuccessInfo";
 import { Link } from "react-router-dom";
+import { Button } from '../product.styled';
 
 const MultiForm = () => {
   const [values, setValues] = useState({
@@ -92,23 +93,23 @@ const MultiForm = () => {
             </div>
           <div className="d-flex justify-content-around px-5 mt-5">
             {step > 1 && step < 5 ? (
-              <button className="btn btn-dark" onClick={prevStep}>
+              <Button onClick={prevStep}>
                 Back
-              </button>
+              </Button>
             ) : null}
 
             {step >= 1 && step < 4 ? (
-              <button className="btn btn-dark" onClick={nextStep}>
+              <Button onClick={nextStep}>
                 Next
-              </button>
+              </Button>
             ) : step === 4 ? (
-              <button className="btn btn-dark" onClick={handleOrder}>
+              <Button onClick={handleOrder}>
                 Submit
-              </button>
+              </Button>
             ) : (
-              <button className="btn btn-dark">
+              <Button>
                 <Link to="/">Home</Link>
-              </button>
+              </Button>
             )}
           </div>
         </div>
