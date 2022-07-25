@@ -21,7 +21,7 @@ const {users, getData} = useContext(GlobalContext)
                 <div className="product-card">
                   <div className="product-img">
                     <img
-                      src="https://cdn.pixabay.com/photo/2021/09/02/16/48/cat-6593947_960_720.jpg"
+                      src= {"./images/" + item.image}
                       alt="img"
                     />
                     {/* <img src="./hb.jpg" width="200px" height="200px" alt="img"/> */}

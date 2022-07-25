@@ -7,6 +7,7 @@ function Main() {
   const [users, setUsers] = useState([]);
   const [initialId, setInitialId] = useState(0);
   const [updateVisibility, setUpdateVisibility] = useState(false);
+  const [img, setImg] = useState('')
 
   const [values, setValues] = useState({
     ProductName: "",
@@ -14,13 +15,13 @@ function Main() {
     Price: "",
     Quantity: "",
     Category: "",
-    Image: "",
   });
-
   const handleChange = (name) => (e) => {
     setValues({ ...values, [name]: e.target.value });
   };
-
+  const handleChangeFile = (e) => {
+    setImg(e.target.files[0].name)
+  }
   const getData = async () => {
     try {
       const response = await fetch("https://localhost:7152/products");
@@ -33,8 +34,6 @@ function Main() {
   const sendData = async (e) => {
     try {
       e.preventDefault();
-      // if (!titleForm || !descriptionform)
-      //   return alert("Empty field not allowed");
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       const body = JSON.stringify({
@@ -43,7 +42,7 @@ function Main() {
         Price : values.Price,
         Quantity: values.Quantity,
         Category: values.Category,
-        Image: values.Image
+        Image: img
       });
       const requestOptions = {
         method: "POST",
@@ -59,7 +58,6 @@ function Main() {
       const deserializedJSON = await response.json();
       setUsers(deserializedJSON);
       setValues('');
-      // setDescriptionform("");
     } catch (e) {
       alert(e.message);
     }
@@ -67,7 +65,6 @@ function Main() {
 
   const getUpdate = async () => {
     try {
-      // if (!title || !description) return alert("Empty field not allowed");
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
       const body = JSON.stringify({
@@ -92,8 +89,6 @@ function Main() {
       const deserializedJSON = await response.json();
       setUsers(deserializedJSON);
       getData();
-      // setTitle("");
-      // setDescription("");
       setUpdateVisibility(false);
     } catch (e) {
       alert(e.message);
@@ -101,8 +96,6 @@ function Main() {
   };
 
   const selectUser = (id, name, description) => {
-    // setTitle(name);
-    // setDescription(description);
     setInitialId(id);
     setUpdateVisibility(true);
   };
@@ -160,9 +153,16 @@ function Main() {
               onChange={handleChange("Category")}
               name="Category"
             />
-            <input
+            {/* <input
               type="file"
               onChange={handleChange("Image")}
+              name="Image"
+              multiple
+            /> */}
+            <input
+              type="file"
+              // value={img}
+              onChange={handleChangeFile}
               name="Image"
               multiple
             />
