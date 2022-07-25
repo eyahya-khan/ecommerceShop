@@ -1,8 +1,13 @@
 .section-home {
-    margin: 37% auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     line-height: 3;
     font-size: 20px;
+    height: 80vh;
+    background-color: #f0f8ff;
 }
 
 .btn-explore a {
@@ -12,10 +17,13 @@
     color: #04aa6d;
 }
 
+@media screen and (min-width: 768px) {
+    .section-home {
+        height: 87vh;
+       font-size: 27px;
+    }
+   }
 
 @media screen and (min-width: 992px) {
-    .section-home {
-        margin: 10% auto;
-        height: 48vh;
-    }
+    
    }

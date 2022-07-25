@@ -5,7 +5,7 @@ import { GlobalContext } from "../../App";
 import { Button, Div} from "../product.styled";
 
 const AlertMessage = ({ productId, productName }) => {
-  const { counter, setCounter } = useContext(GlobalContext);
+  const { counter, setCounter, setPopup} = useContext(GlobalContext);
 
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const cartuniqueid = uuid();
@@ -70,9 +70,12 @@ const AlertMessage = ({ productId, productName }) => {
   setIsAlertVisible(true);
   setTimeout(() => {
   setIsAlertVisible(false);
-  }, 3000);
+}, 3000);
 }else{
-alert('Login first!')
+  setPopup(true);
+  setTimeout(() => {
+  setPopup(false);
+  }, 3000);
 }
 };
 

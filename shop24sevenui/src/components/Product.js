@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react";
 import AlertMessage from "./Alert/AlertMessage";
 import { GlobalContext } from "../App";
 import { Div } from "./product.styled";
-// import SearchForm from "./Search/SearchForm";
 
 function Product() {
 const {users, getData} = useContext(GlobalContext)
@@ -24,7 +23,6 @@ const {users, getData} = useContext(GlobalContext)
                       src= {"./images/" + item.image}
                       alt="img"
                     />
-                    {/* <img src="./hb.jpg" width="200px" height="200px" alt="img"/> */}
                   </div>
                   <Div>
                   <h2>{item.productName}</h2>

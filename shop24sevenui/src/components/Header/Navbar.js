@@ -4,11 +4,11 @@ import "./Navbar.css";
 import { GlobalContext } from "../../App";
 
 const Navbar = () => {
-  const { counter } = useContext(GlobalContext);
+  const { counter, popup } = useContext(GlobalContext);
 
   const [humMenu, setHumMenu] = useState(false);
   const username = localStorage.getItem("username");
-  const [displayCounter] = useState(true)
+  const [displayCounter] = useState(true);
 
   const removeHumMenu = () => {
     setHumMenu(false);
@@ -48,6 +48,9 @@ const Navbar = () => {
               <Link to="/product" onClick={removeHumMenu}>
                 Product
               </Link>
+              <Link to="/category" onClick={removeHumMenu}>
+                Category
+              </Link>
               <Link to="/cart" onClick={removeHumMenu}>
                 Cart
               </Link>
@@ -73,15 +76,23 @@ const Navbar = () => {
               </div>
             </>
           ) : (
-            <div className="login-icon">
-              <Link to="/signup">Login</Link>
-            </div>
+            <>
+            {popup && (
+              <div class="popup">
+                <span class="popuptext" id="myPopup">
+                  Login First!
+                </span>
+              </div>
+              )}
+              <div className="login-icon">
+                <Link to="/signup">Login</Link>
+              </div>
+            </>
           )}
           <div className="cart-icon">
             <Link to="/cart">
               <img src="./images/cart.png" alt="cart" />
-              {(counter !== 0 && displayCounter) ? <p>{counter}</p> : null}
-              
+              {counter !== 0 && displayCounter ? <p>{counter}</p> : null}
             </Link>
           </div>
         </div>

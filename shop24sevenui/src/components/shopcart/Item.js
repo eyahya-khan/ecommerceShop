@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import { CartContext } from "./Cart";
 
-const Items = ({ cartId, productName, price, quantity }) => {
+const Items = ({ cartId, productName, price, quantity, image }) => {
   const { removeItem, increment, decrement} = useContext(CartContext);
   
   return (
     <>
       <div className="items-info">
         <div className="product-img">
-          <img src="https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="iamge" />
+          <img src= {"./images/" + image} alt="iamge" />
         </div>
 
         <div className="title">
