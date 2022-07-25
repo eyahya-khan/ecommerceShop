@@ -7,8 +7,10 @@ border-radius: 10px;
 padding: 10px;
 font-size: 16px;
 border: 2px solid #fff;
+margin: 15px;
+width: 150px;
 &:hover{
-    background-color: #0d6efd;
+    border: 2px solid #ec319e;
 }
 `
 

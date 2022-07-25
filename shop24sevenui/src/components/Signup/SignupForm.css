@@ -1,0 +1,43 @@
+.signup-container {
+  text-align: center;
+  margin-top: 20vh;
+  height: 51vh;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+input {
+  margin: 0.5rem 0;
+  padding: 1rem;
+  outline: none;
+}
+input[type="email"], 
+input[type="password"], 
+input[type="submit"]{
+    height: 50px;
+    font-size: 20px;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 5px;
+    margin-top: 20px;
+}
+
+input:invalid:not(:placeholder-shown) {
+  border: 2px solid red;
+}
+
+input:valid:not(:placeholder-shown) {
+  border: 2px solid green;
+}
+
+
+@media screen and (min-width: 992px) {
+    .signup-container {
+      height: 58vh;
+    }
+  }

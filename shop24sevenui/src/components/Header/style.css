@@ -17,6 +17,7 @@
   align-items: center;
   height: 50px;
   font-size: 14px;
+  margin-bottom: 5px;
 }
 .nav-link a {
   text-decoration: none;
@@ -30,7 +31,7 @@
   font-size: 16px;
 }
 
-.signin-cart-btn p{
+.signin-cart-btn p {
   margin: 10px;
 }
 
@@ -52,9 +53,9 @@
 }
 
 .btn-close {
-    float: right;
-    font-size: 30px;
-    color: #04aa6d;
+  float: right;
+  font-size: 30px;
+  color: #04aa6d;
 }
 
 .login-text {
@@ -80,23 +81,25 @@
 }
 
 .login-icon {
-  display: flex;
-  align-items: center;
   margin-right: 5px;
-  cursor: pointer;
+  background-color: #002b64;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
 }
 .login-icon:hover {
-  color: #0d6efd;;
+  color: #0d6efd;
+  border: 2px solid #ec319e;
 }
 
-.login-icon a{
-  color: #000;
+.login-icon a {
+  color: #fff;
   text-decoration: none;
 }
 
- @media screen and (min-width: 992px) {
+@media screen and (min-width: 992px) {
   .navbar {
     display: flex;
     width: 968px;
   }
- }
+}

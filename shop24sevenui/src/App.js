@@ -3,12 +3,12 @@ import React, { useState, createContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Product from "./components/Product";
 import Home from "./pages/Home";
-import Signup from "./components/Signup/Signup";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import MultiForm from "./components/MultiStepForm/MultiForm";
 import Cart from "./components/shopcart/Cart";
 import Main from "./components/Admin/Main"
+import SignupForm from "./components/Signup/SignupForm";
 // import Form from "./components/Search/Form";
 
 export const GlobalContext = createContext();
@@ -63,7 +63,7 @@ function App() {
             <Route path="/product" element={<Product />} />
             <Route path="/admin" element={<Main />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/signup" element={<Signup />} />
+            <Route path="/signup" element={<SignupForm />} />
             <Route path="/multistepform" element={<MultiForm />} />
           </Routes>
           <Footer />

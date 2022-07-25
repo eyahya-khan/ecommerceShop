@@ -1,33 +1,18 @@
-/* .header {
-  height: 35px;
-  background-color: #04aa6d;
-  text-align: center;
-  font-size: 25px;
-  padding: 5px;
+.main-container{
+  margin: 20px;
 }
-.container {
-  width: 325px;
-  margin: 20px auto;
-} */
-
-/* h1 {
-  margin: 32px 10px;
-  color: #000;
-  font-size: 18px;
-  border: 3px solid #04aa6d;
-  border-radius: 10px;
-  background-color: #fff;
-  padding: 5px;
-  text-align: center;
-} */
-
 input[type="text"] {
   height: 50px;
   font-size: 20px;
   border: 1px solid;
   border-radius: 10px;
-  padding: 3px;
-  margin-top: 20px;
+  padding: 5px;
+  margin-top: 15px;
+}
+
+input[type="file"] {
+  margin: 5px;
+  width: 100%;
 }
 
 .container-form {
@@ -73,7 +58,7 @@ input[type="text"] {
   border-collapse: collapse;
   width: 100%;
   margin-top: 10px;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 #customers td,
@@ -136,9 +121,7 @@ input[type="text"] {
   h1 {
     font-size: 25px;
   }
-  .container {
-    width: 510px;
-  }
+  
   input[type="text"] {
     font-size: 20px;
   }
@@ -150,5 +133,12 @@ input[type="text"] {
 }
 
 @media screen and (min-width: 992px) {
-  
+  .main-container {
+    display: grid;
+    grid-template-columns: 30% 60%;
+    grid-template-rows: 1fr;
+    grid-column-gap: 40px;
+    grid-row-gap: 0px;
+    margin: 15px 60px;
+    }
 }

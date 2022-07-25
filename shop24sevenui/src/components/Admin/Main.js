@@ -122,7 +122,7 @@ function Main() {
 
   return (
     <>
-      <div className="container">
+      <div className="main-container">
         <div>
           <form onSubmit={sendData} className="container-form">
             <input
@@ -162,7 +162,6 @@ function Main() {
             />
             <input
               type="file"
-              // value={descriptionform}
               onChange={handleChange("Image")}
               name="Image"
               multiple

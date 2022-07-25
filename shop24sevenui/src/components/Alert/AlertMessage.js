@@ -62,14 +62,19 @@ const AlertMessage = ({ productId, productName }) => {
   };
 
   const handleButtonClick = () => {
-    sendToCart();
-    sendToCartDetails();
-    setCounter(counter + 1);
-    setIsAlertVisible(true);
-    setTimeout(() => {
-      setIsAlertVisible(false);
-    }, 3000);
-  };
+  const username = localStorage.getItem("username");
+  if(username) {
+  sendToCart();
+  sendToCartDetails();
+  setCounter(counter + 1);
+  setIsAlertVisible(true);
+  setTimeout(() => {
+  setIsAlertVisible(false);
+  }, 3000);
+}else{
+alert('Login first!')
+}
+};
 
   return (
     <>
