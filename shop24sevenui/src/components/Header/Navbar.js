@@ -7,9 +7,10 @@ const Navbar = () => {
   const { counter, popup } = useContext(GlobalContext);
 
   const [humMenu, setHumMenu] = useState(false);
-  const username = localStorage.getItem("username");
   const [displayCounter] = useState(true);
-
+  
+  const username = localStorage.getItem("username");
+  
   const removeHumMenu = () => {
     setHumMenu(false);
   };
@@ -17,15 +18,9 @@ const Navbar = () => {
     setHumMenu(true);
   };
 
-  // const refresh = () => {
-  //   window.location.reload();
-  // };
-
   const handleClickSignout = () => {
     localStorage.removeItem("username");
     Navigate("/home");
-    
-    // refresh();
   };
 
   return (

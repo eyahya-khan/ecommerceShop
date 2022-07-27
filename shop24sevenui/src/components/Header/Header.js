@@ -8,9 +8,9 @@ function Header() {
   return (
     <>
       <Navbar
-        isCartVisible={isCartVisible}
         users={users}
         setUsers={setUsers}
+        isCartVisible={isCartVisible}
         setIsCartVisible={setIsCartVisible}
       />
     </>
