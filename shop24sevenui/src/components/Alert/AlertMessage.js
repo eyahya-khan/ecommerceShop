@@ -2,10 +2,10 @@ import "./Alert.css";
 import React, { useState, useContext } from "react";
 import { v4 as uuid } from "uuid";
 import { GlobalContext } from "../../App";
-import { Button, Div} from "../product.styled";
+import { Button, Div } from "../product.styled";
 
 const AlertMessage = ({ productId, productName }) => {
-  const { counter, setCounter, setPopup} = useContext(GlobalContext);
+  const { counter, setCounter, setPopup } = useContext(GlobalContext);
 
   const [isAlertVisible, setIsAlertVisible] = useState(false);
   const cartuniqueid = uuid();
@@ -62,28 +62,28 @@ const AlertMessage = ({ productId, productName }) => {
   };
 
   const handleButtonClick = () => {
-  const username = localStorage.getItem("username");
-  if(username) {
-  sendToCart();
-  sendToCartDetails();
-  setCounter(counter + 1);
-  setIsAlertVisible(true);
-  setTimeout(() => {
-  setIsAlertVisible(false);
-}, 3000);
-}else{
-  setPopup(true);
-  setTimeout(() => {
-  setPopup(false);
-  }, 3000);
-}
-};
+    const username = localStorage.getItem("username");
+    if (username) {
+      sendToCart();
+      sendToCartDetails();
+      setCounter(counter + 1);
+      setIsAlertVisible(true);
+      setTimeout(() => {
+        setIsAlertVisible(false);
+      }, 3000);
+    } else {
+      setPopup(true);
+      setTimeout(() => {
+        setPopup(false);
+      }, 3000);
+    }
+  };
 
   return (
     <>
-    <Div>
-      <Button onClick={handleButtonClick}>Add to cart</Button>
-    </Div>
+      <Div>
+        <Button onClick={handleButtonClick}>Add to cart</Button>
+      </Div>
       {isAlertVisible && (
         <div className="alert-container">
           <div className="alert-inner">
@@ -91,7 +91,7 @@ const AlertMessage = ({ productId, productName }) => {
           </div>
         </div>
       )}
-      </>
+    </>
   );
 };
 

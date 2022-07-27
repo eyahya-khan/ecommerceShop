@@ -18,7 +18,6 @@ const formLogin = () => {
       <input type="text" minLength='5' required name="username" placeholder="Username"  onChange={handleChange}   />
       {
         errors.username && <h3>{errors.username}</h3>
-
       }
       <input type="email" name="email" placeholder="Email"  onChange={handleChange}   />
       {

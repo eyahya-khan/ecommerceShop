@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import AlertMessage from "./Alert/AlertMessage";
 import { GlobalContext } from "../App";
 import { Div } from "./product.styled";
+import ProductMenu from "./product/ProductMenu";
 
 function Product() {
 const {users, getData} = useContext(GlobalContext)
@@ -14,6 +15,7 @@ const {users, getData} = useContext(GlobalContext)
     <>
       <div className="container">
         {/* <SearchForm/> */}
+        <ProductMenu/>
           <div className="product-container">
             {users.map((item) => {
               return (

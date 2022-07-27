@@ -57,7 +57,6 @@ function Main() {
       );
       const deserializedJSON = await response.json();
       setUsers(deserializedJSON);
-      setValues('');
     } catch (e) {
       alert(e.message);
     }

@@ -14,19 +14,17 @@ public class SignupController : ControllerBase
     [HttpGet]
     public IActionResult Login(string UserName, string Password)
     {
-        var depPass = _context.TblSignup?.Where(x => x.UserName == UserName);
-
-Console.WriteLine("Hello world");
-Console.WriteLine("Press any key to exit.");
-Console.Read();
+        var depPass = _context.TblSignup?.FirstOrDefault(item => item.UserName == UserName);
+        if (depPass == null) return Ok();
+        var depPassword = DecryptString(depPass.Password == null ? "" : depPass.Password);
 
         int result = 1;
-        // if(DecryptString() == Password)
-        // {
-        //     result = 1;
-        // }else{
-        //     result = 0;
-        // }
+        if(depPassword == Password)
+        {
+            result = 1;
+        }else{
+            result = 0;
+        }
         return Ok(result);
     }
 
@@ -41,7 +39,11 @@ Console.Read();
     [HttpPost]
     public async Task<IActionResult> Add(Models.Cart.SignupInsertModel request)
     {
-        var encrptPassword = EnryptString(request.Password == null ? "" : request.Password);
+        int result = 1;
+        var isUserExist = _context.TblSignup?.FirstOrDefault(item => item.UserName == request.UserName);
+        if (isUserExist == null)
+        {
+         var encrptPassword = EnryptString(request.Password == null ? "" : request.Password);
         var simpleModel = new Signup()
         {
             UserName = request.UserName,
@@ -50,8 +52,20 @@ Console.Read();
             ConfirmPassword = request.ConfirmPassword,
         };
         _context.TblSignup?.Add(simpleModel);
-        await _context.SaveChangesAsync();
-        return Ok(_context.TblSignup);
+        await _context.SaveChangesAsync();   
+        }
+        
+        else
+        {
+        var depPassword = DecryptString(isUserExist.Password == null ? "" : isUserExist.Password);
+        if(depPassword == request.Password)
+        {
+            result = 1;
+        }else{
+            result = 0;
+        }
+        }
+        return Ok(result);
     }
 
     public string DecryptString(string encrString)

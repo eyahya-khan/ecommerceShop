@@ -27,6 +27,14 @@ public class ProductsController : ControllerBase
         return Ok(getDataById);
     }
 
+    [HttpGet("GetProductByCategory/{category?}")]
+    public IActionResult GetProductByCategory(string category)
+    {
+        if (_context.TblProducts == null) return Ok();
+        var getDataByCategory = _context.TblProducts.Where(item => item.Category == category);
+        return Ok(getDataByCategory);
+    }
+
     [HttpPost]
     public async Task<IActionResult> Add(InsertModel request)
     {

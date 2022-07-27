@@ -1,0 +1,8 @@
+.product-menu-container {
+    color: #04aa6d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    font-size: 22px;
+}

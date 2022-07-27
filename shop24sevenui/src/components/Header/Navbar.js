@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "./Navbar.css";
 import { GlobalContext } from "../../App";
 
@@ -17,13 +17,15 @@ const Navbar = () => {
     setHumMenu(true);
   };
 
-  const refresh = () => {
-    window.location.reload();
-  };
+  // const refresh = () => {
+  //   window.location.reload();
+  // };
 
   const handleClickSignout = () => {
     localStorage.removeItem("username");
-    refresh();
+    Navigate("/home");
+    
+    // refresh();
   };
 
   return (
@@ -44,12 +46,6 @@ const Navbar = () => {
             <div className="overlay-content">
               <Link to="/" onClick={removeHumMenu}>
                 Home
-              </Link>
-              <Link to="/product" onClick={removeHumMenu}>
-                Product
-              </Link>
-              <Link to="/category" onClick={removeHumMenu}>
-                Category
               </Link>
               <Link to="/cart" onClick={removeHumMenu}>
                 Cart

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { omit } from "lodash";
+import { useNavigate } from "react-router-dom";
 
 const useForm = (callback) => {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const validate = (e, name, value) => {
     switch (name) {
@@ -93,11 +95,13 @@ const useForm = (callback) => {
           "https://localhost:7152/signup",
           requestOptions
         );
-        await response.json();
-        //   setEmail("");
-        //   setPassword("");
-        //   setConfirmPassword("");
-        window.location.reload();
+        var result = await response.json();
+        if(result === 1)
+        {
+          navigate('/');
+        }else{
+          alert('username is not correct')
+        }
       } catch (e) {
         alert(e.message);
       }

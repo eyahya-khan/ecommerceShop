@@ -2,7 +2,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace shop24sevenApi.Models.Signup;
 
-
 public class Signup
 {
     [Key]
